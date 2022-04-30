@@ -18,21 +18,14 @@ func escape_time(c complex128, limit uint8) uint8 {
 		}
 		z = z*z + c
 	}
-	return 0
+	return 255
 }
 
 func pixel_to_point(width int, height int, row int, column int, upper_left complex128, lower_right complex128) complex128 {
-	// let (width, height) = (lower_right.re - upper_left.re,
-	// 	upper_left.im - lower_right.im);
-	// complex128 {
-	// re: upper_left.re + pixel.0 as f64 * width /bounds.0 as f64,
-	// im: upper_left.im - pixel.1 as f64 * height/bounds.1 as f64
-	// }
-
 	var pixwidth float64 = real(lower_right) - real(upper_left)
 	var pixheight = imag(upper_left) - imag(lower_right)
-	var resreal float64 = (real(upper_left) + float64(row)) * pixwidth / float64(width)
-	var resimag = (imag(upper_left) - float64(column)) * pixheight / float64(height)
+	var resreal = real(upper_left) + (float64(row))*pixwidth/float64(width)
+	var resimag = imag(upper_left) - (float64(column))*pixheight/float64(height)
 	return complex(resreal, resimag)
 }
 
@@ -45,7 +38,7 @@ func render(myImage *image.RGBA, width int, height int, upper_left complex128, l
 		for column := 0; column < width; column++ {
 			i := row*width + column
 			var point complex128 = pixel_to_point(width, height, row, column, upper_left, lower_right)
-			var color uint8 = escape_time(point, 255)
+			var color uint8 = 255 - escape_time(point, 255)
 			myImage.Pix[i*4+0] = color
 			myImage.Pix[i*4+1] = color
 			myImage.Pix[i*4+2] = color
