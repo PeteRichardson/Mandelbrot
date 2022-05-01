@@ -1,3 +1,4 @@
 *.png
 build/
 target/
+__pycache__/
