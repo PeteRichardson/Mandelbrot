@@ -57,12 +57,12 @@ func write_image(filename string, myImage image.Image) {
 }
 
 func main() {
-	const WIDTH int = 4000
-	const HEIGHT int = 3000
+	const WIDTH int = 1000
+	const HEIGHT int = 750
 
 	myImage := image.NewRGBA(image.Rect(0, 0, WIDTH, HEIGHT))
 
 	render(myImage, WIDTH, HEIGHT, -1.20+0.35i, -1+0.2i)
 
-	write_image("test.png", myImage)
+	write_image("mandlebrot-go.png", myImage)
 }
