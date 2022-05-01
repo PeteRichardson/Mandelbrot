@@ -16,6 +16,14 @@ fn escape_time(c: Complex<f64>, limit: usize) -> Option<usize> {
     None
 }
 
+#[test]
+fn test_escape_time() {
+    assert_eq!(escape_time(Complex { re: 0.0, im: 0.0 }, 255), None);
+    assert_eq!(escape_time(Complex { re: 0.5, im: 0.3 }, 255), Some(6));
+    assert_eq!(escape_time(Complex { re: -0.5, im: 0.25 }, 255), None);
+    assert_eq!(escape_time(Complex { re: 0.0, im: 0.75 }, 255), Some(34));
+}
+
 fn parse_pair<T: FromStr>(s: &str, separator: char) -> Option<(T,T)> {
     match s.find(separator) {
         None => None,
@@ -111,7 +119,7 @@ fn main() {
 
     if args.len() != 5 {
         eprintln!("Usage: {} FILE PIXELS UPPERLEFT LOWERRIGHT", args[0]);
-        eprintln!("Example: {} mandel.jpg 1000x750 -1.20,0.35 -1,0.20", args[0]);
+        eprintln!("Example: {} mandelbrot-rust.png 1000x750 -1.20,0.35 -1,0.20", args[0]);
         std::process::exit(1);
     }
 
