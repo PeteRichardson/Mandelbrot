@@ -1,0 +1,35 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {   "name": "Rust: Debug",
+            "type": "lldb",
+            "request": "launch",
+            "program": "${workspaceFolder}/rust/target/debug/mandelbrot",
+            "args": [
+                "mandelbrot-rust.png",
+                "1000x750",
+                "-1.20,0.35",
+                "-1,0.20"
+            ],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}/rust",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "lldb",
+            "targetArchitecture": "arm64"
+        },
+        {
+            "name": "Rust: Run Tests",
+            "type": "lldb",
+            "request": "launch",
+            "program": "cargo",
+            "args": [
+                    "test",
+                ],
+            "cwd": "${workspaceFolder}/rust"
+        }
+    ]
+}
