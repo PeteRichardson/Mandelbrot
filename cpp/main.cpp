@@ -1,7 +1,9 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <complex>
 #include "lodepng.h"
+#include "mandelbrot.h"
 
 using Image = std::vector<unsigned char>;
 
