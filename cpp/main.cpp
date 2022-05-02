@@ -7,10 +7,16 @@
 
 using Image = std::vector<unsigned char>;
 
-void render(Image& image, unsigned width, unsigned height) {
+void render(Image& image, unsigned width, unsigned height, std::complex<double> upper_left, std::complex<double> lower_right) {
     for (int row=0; row < width; row++) {
         for (int column=0; column < height; column++) {
-            image[row * width + column] = 128;
+            int i = row*width + column;
+			std::complex<double> point = PixelToPoint(width, height, row, column, upper_left, lower_right);
+			uint8_t color = 255 - escape_time(point, 255);
+			image[i*4+0] = color;
+			image[i*4+1] = color;
+			image[i*4+2] = color;
+			image[i*4+3] = 255;
         }
     }
 }
@@ -23,8 +29,10 @@ void write_file(const char* filename, Image& image, unsigned width, unsigned hei
 int main(int argc, const char * argv[]) {
     unsigned width =  1000;
     unsigned height = 750;
+    std::complex<double> upper_left(-1.0, 1.0);
+    std::complex<double> lower_right(1.0, -1.0);
     Image image(width*height*4);
-    render(image, width, height);
+    render(image, width, height, upper_left, lower_right);
     write_file("mandelbrot-cpp.png", image, width, height);
     return 0;
 }

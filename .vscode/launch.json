@@ -32,14 +32,21 @@
             "cwd": "${workspaceFolder}/rust"
         },
         {
+            "name": "Cpp: Debug",
+            "type": "lldb",
+            "request": "launch",
+            "program": "${workspaceFolder}/cpp/build/mandelbrot-cpp",
+            "cwd": "${workspaceFolder}/cpp/"
+        },
+        {
             "name": "Cpp: Run Tests",
             "type": "lldb",
             "request": "launch",
             "program": "ctest",
             "args": [
                 "--test-dir",
-                "build/tests"
-            ]
+                "${workspaceFolder}/cpp/build/tests"
+            ],
             "cwd": "${workspaceFolder}/cpp"
         }
     ]
