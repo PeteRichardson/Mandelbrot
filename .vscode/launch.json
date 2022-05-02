@@ -30,6 +30,17 @@
                     "test",
                 ],
             "cwd": "${workspaceFolder}/rust"
+        },
+        {
+            "name": "Cpp: Run Tests",
+            "type": "lldb",
+            "request": "launch",
+            "program": "ctest",
+            "args": [
+                "--test-dir",
+                "build/tests"
+            ]
+            "cwd": "${workspaceFolder}/cpp"
         }
     ]
 }
