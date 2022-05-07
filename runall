@@ -2,4 +2,4 @@
 cd rust && cargo build -q && target/debug/mandelbrot mandelbrot-rust.png 1000x750 -1.20,0.35 -1,0.20 && cd ..
 cd go && go build && ./mandelbrot-go && cd ..
 cd cpp && cmake --build build && build/mandelbrot-cpp && cd ..
-open *.png
+open rust/*.png go/*.png cpp/*.png 
