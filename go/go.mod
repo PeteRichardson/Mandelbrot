@@ -1,3 +1,3 @@
-module mandlebrot-go
+module mandelbrot-go
 
 go 1.18
