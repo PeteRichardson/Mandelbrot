@@ -8,6 +8,8 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(googletest)
 
+set (CMAKE_TARGET_MESSAGES false)
+
 project ( mandelbrot-cpp)
 
 add_executable(mandelbrot-cpp main.cpp lodepng.cpp  mandelbrot.cc)
