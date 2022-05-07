@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include <string>
 #include <vector>
 #include <complex>
@@ -29,9 +30,11 @@ void write_file(const char* filename, Image& image, unsigned width, unsigned hei
 int main(int argc, const char * argv[]) {
     unsigned width =  1000;
     unsigned height = 750;
-    std::complex<double> upper_left(-1.0, 1.0);
-    std::complex<double> lower_right(1.0, -1.0);
+    std::complex<double> upper_left(-1.20, 0.35);
+    std::complex<double> lower_right(-1.0, 0.20);
     Image image(width*height*4);
+    std::cout << "# Lang=Cpp,  Width=" << std::setw(5) << width << ", Height=" << std::setw(5) << height << ", upper_left=" << upper_left << ", lower_right=" << lower_right << std::endl;
+
     render(image, width, height, upper_left, lower_right);
     write_file("mandelbrot-cpp.png", image, width, height);
     return 0;

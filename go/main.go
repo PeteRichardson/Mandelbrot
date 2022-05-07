@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"image"
 	"image/png"
 	"os"
@@ -61,8 +62,11 @@ func main() {
 	const HEIGHT int = 750
 
 	myImage := image.NewRGBA(image.Rect(0, 0, WIDTH, HEIGHT))
+	const upper_left = -1.20 + 0.35i
+	const lower_right = -1 + 0.2i
 
-	render(myImage, WIDTH, HEIGHT, -1.20+0.35i, -1+0.2i)
+	fmt.Printf("# Lang=Go,   Width=%5d, Height=%5d, upper_left=%v, lower_right=%v\n", WIDTH, HEIGHT, upper_left, lower_right)
+	render(myImage, WIDTH, HEIGHT, upper_left, lower_right)
 
-	write_image("mandlebrot-go.png", myImage)
+	write_image("mandelbrot-go.png", myImage)
 }
