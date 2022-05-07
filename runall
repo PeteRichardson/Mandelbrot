@@ -1,0 +1,5 @@
+#!/bin/bash
+rust/target/debug/mandelbrot mandelbrot-rust.png 750x1000 -1.20,0.35 -1,0.20 
+go/mandelbrot-go
+cpp/build/mandelbrot-cpp
+open *.png
